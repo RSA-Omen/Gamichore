@@ -1,0 +1,60 @@
+.kid-picker {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.kid-picker h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1.5rem;
+}
+
+.kid-picker-empty {
+  color: var(--text-muted);
+  margin: 0 0 1.5rem;
+}
+
+.kid-picker-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 280px;
+  margin: 0 auto 2rem;
+}
+
+.kid-picker-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 3px solid var(--star);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.kid-picker-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 195, 0, 0.25);
+  background: #fffef8;
+}
+
+.kid-picker-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-light), var(--accent));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.kid-picker-back {
+  margin-top: 0.5rem;
+}

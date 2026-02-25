@@ -1,0 +1,102 @@
+.approval-log-intro {
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.approval-log-date-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.approval-log-date-picker input[type="date"] {
+  padding: 0.4rem 0.6rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.approval-log-date-label {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.approval-log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.approval-log-day {
+  padding: 1rem 1.25rem;
+}
+
+.approval-log-day-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.approval-log-no-tasks {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.approval-log-section {
+  margin-bottom: 0.75rem;
+}
+
+.approval-log-section:last-child {
+  margin-bottom: 0;
+}
+
+.approval-log-section-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.approval-log-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.approval-log-item {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.approval-log-item:last-child {
+  border-bottom: none;
+}
+
+.approval-log-item label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.approval-log-item input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.approval-log-item-name {
+  flex: 1;
+}
+
+.approval-log-item-stars {
+  color: var(--star);
+  font-weight: 500;
+}
+
+.approval-log-item .btn-danger:hover {
+  color: #c1121f;
+}

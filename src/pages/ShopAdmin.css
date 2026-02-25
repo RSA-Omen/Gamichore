@@ -1,0 +1,109 @@
+.shop-admin-page .page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.shop-item-form {
+  max-width: 420px;
+  margin-bottom: 1.5rem;
+}
+
+.shop-item-form label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.shop-item-form input[type="text"],
+.shop-item-form input[type="number"] {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.image-upload input[type="file"] {
+  margin-top: 0.25rem;
+}
+
+.image-preview {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.image-preview img {
+  max-width: 200px;
+  max-height: 160px;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+}
+
+.image-placeholder {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.shop-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.shop-admin-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.shop-admin-card-image {
+  aspect-ratio: 1;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.shop-admin-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shop-admin-placeholder {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.shop-admin-card-body {
+  padding: 1rem;
+}
+
+.shop-admin-card-body h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.shop-admin-prices {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 0.75rem;
+}
+
+.shop-admin-actions {
+  display: flex;
+  gap: 0.25rem;
+}

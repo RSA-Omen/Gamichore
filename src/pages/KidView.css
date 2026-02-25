@@ -1,0 +1,28 @@
+.kid-view-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.kid-view-tabs button {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.kid-view-tabs button:hover {
+  border-color: var(--primary-light);
+  color: var(--text);
+}
+
+.kid-view-tabs button.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: white;
+}

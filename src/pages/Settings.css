@@ -1,0 +1,27 @@
+.settings-theme {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.settings-theme label {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.settings-theme-select {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.settings-theme-select:focus {
+  outline: none;
+  border-color: var(--primary);
+}

@@ -1,0 +1,141 @@
+.kids-page .page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.kid-form {
+  max-width: 400px;
+  margin-bottom: 1.5rem;
+}
+
+.kid-form label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.kid-form input[type="text"],
+.kid-form input[type="number"] {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.kid-form-star-override {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.kid-form-star-override input {
+  display: inline-block;
+  width: auto;
+  margin: 0;
+}
+
+.kid-form-chore-sets {
+  margin-top: 0.25rem;
+  max-height: 140px;
+  overflow-y: auto;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.kid-form-chore-set-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  cursor: pointer;
+}
+
+.kid-form-chore-set-item input {
+  display: inline-block;
+  width: auto;
+  margin: 0;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.kids-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.kid-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.kid-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-light), var(--accent));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.kid-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.kid-info h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.2rem;
+}
+
+.kid-stars {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.kid-chore-set {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.star-icon {
+  font-size: 1rem;
+}
+
+.kid-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.btn-danger:hover {
+  color: #c1121f;
+}
+
+.empty-state {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2rem;
+}

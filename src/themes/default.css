@@ -1,0 +1,17 @@
+/* Default: warm cream palette (matches original index.css) */
+:root {
+  --bg: #fef9f0;
+  --surface: #fffbf5;
+  --card: #ffffff;
+  --primary: #e85d04;
+  --primary-light: #f48c06;
+  --accent: #9d4edd;
+  --accent-light: #c77dff;
+  --star: #ffc300;
+  --text: #2d1b4e;
+  --text-muted: #5c4d6d;
+  --border: #ecdcc8;
+  --success: #2d6a4f;
+  --radius: 16px;
+  --shadow: 0 4px 20px rgba(45, 27, 78, 0.08);
+}

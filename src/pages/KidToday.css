@@ -1,0 +1,90 @@
+.kid-today-page {
+  padding-bottom: 2rem;
+}
+
+.kid-today-header {
+  margin-bottom: 1rem;
+}
+
+.kid-today-header h1 {
+  margin: 0 0 0.25rem;
+}
+
+.kid-today-date {
+  margin: 0 0 0.5rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.kid-today-stars {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.kid-today-message {
+  background: #e8f5e9;
+  border-color: var(--success);
+  margin-bottom: 1rem;
+}
+
+.kid-today-section {
+  margin-bottom: 1rem;
+}
+
+.kid-today-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.kid-today-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.kid-today-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.kid-today-list li:last-child {
+  border-bottom: none;
+}
+
+.kid-today-list label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.kid-today-list input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.kid-today-stars-inline {
+  margin-left: auto;
+  color: var(--star);
+  font-weight: 500;
+}
+
+.kid-today-done {
+  color: var(--text-muted);
+}
+
+.kid-today-check {
+  color: var(--success);
+  margin-right: 0.35rem;
+}
+
+.kid-today-submit {
+  margin-top: 1.5rem;
+}
+
+.kid-today-submit .btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}

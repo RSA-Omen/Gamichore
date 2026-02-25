@@ -1,0 +1,90 @@
+.mark-done-intro {
+  color: var(--text-muted);
+  margin: 0 0 0.25rem;
+}
+
+.mark-done-date {
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+
+.mark-done-kids {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mark-done-kid-card {
+  padding: 1rem 1.25rem;
+}
+
+.mark-done-kid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.mark-done-kid-name {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.mark-done-kid-stars {
+  color: var(--star);
+  font-weight: 500;
+}
+
+.mark-done-no-tasks {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.mark-done-section {
+  margin-bottom: 0.75rem;
+}
+
+.mark-done-section:last-child {
+  margin-bottom: 0;
+}
+
+.mark-done-section-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.mark-done-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mark-done-item {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.mark-done-item:last-child {
+  border-bottom: none;
+}
+
+.mark-done-item label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.mark-done-item input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.mark-done-item-stars {
+  margin-left: auto;
+  color: var(--star);
+  font-weight: 500;
+}

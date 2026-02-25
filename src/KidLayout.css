@@ -1,0 +1,43 @@
+.kid-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.kid-layout-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(0.75rem + var(--safe-top)) 1.5rem 0.75rem 1.5rem;
+  background: var(--card);
+  border-bottom: 3px solid var(--border);
+}
+
+.kid-layout-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.kid-layout-exit {
+  padding: 0.5rem 0.75rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.kid-layout-exit:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.kid-layout-main {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}

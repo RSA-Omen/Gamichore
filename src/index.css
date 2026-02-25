@@ -1,0 +1,126 @@
+:root {
+  --bg: #fef9f0;
+  --surface: #fffbf5;
+  --card: #ffffff;
+  --primary: #e85d04;
+  --primary-light: #f48c06;
+  --accent: #9d4edd;
+  --accent-light: #c77dff;
+  --star: #ffc300;
+  --text: #2d1b4e;
+  --text-muted: #5c4d6d;
+  --border: #ecdcc8;
+  --success: #2d6a4f;
+  --radius: 16px;
+  --shadow: 0 4px 20px rgba(45, 27, 78, 0.08);
+  --font-display: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Safe area for notched / gesture nav (Android) */
+  --safe-top: env(safe-area-inset-top, 0);
+  --safe-right: env(safe-area-inset-right, 0);
+  --safe-bottom: env(safe-area-inset-bottom, 0);
+  --safe-left: env(safe-area-inset-left, 0);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: var(--font-body);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Shared components */
+.page {
+  padding: 0;
+}
+
+.page h1 {
+  font-size: 1.75rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-light);
+  border-color: var(--primary-light);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+
+.btn-ghost:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.btn-sm {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.85rem;
+}
+
+/* Mobile: touch-friendly targets and spacing */
+@media (max-width: 640px) {
+  .btn {
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+  }
+  .btn-sm {
+    min-height: 36px;
+  }
+  .card {
+    padding: 1rem;
+  }
+  .layout-main,
+  .kid-layout-main {
+    padding: 1rem;
+  }
+}

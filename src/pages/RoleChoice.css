@@ -1,0 +1,68 @@
+.role-choice {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(160deg, var(--bg) 0%, var(--surface) 100%);
+}
+
+.role-choice-logo {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin: 0 0 0.5rem;
+}
+
+.role-choice-tagline {
+  color: var(--text-muted);
+  margin: 0 0 3rem;
+  font-size: 1.1rem;
+}
+
+.role-choice-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 320px;
+}
+
+.role-choice-btn {
+  padding: 1.25rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.role-choice-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.role-choice-parent {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.role-choice-parent:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-light);
+}
+
+.role-choice-kid {
+  background: var(--card);
+  color: var(--text);
+  border-color: var(--star);
+  color: var(--text);
+}
+
+.role-choice-kid:hover {
+  background: #fffef8;
+  border-color: var(--star);
+  box-shadow: 0 0 0 2px var(--bg), 0 6px 20px rgba(255, 195, 0, 0.2);
+}
