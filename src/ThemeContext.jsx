@@ -18,14 +18,7 @@ function getStoredTheme() {
 }
 
 function applyTheme(themeId) {
-  const existing = document.getElementById('theme-stylesheet')
-  if (existing) existing.remove()
-
-  const link = document.createElement('link')
-  link.id = 'theme-stylesheet'
-  link.rel = 'stylesheet'
-  link.href = `/themes/${themeId}.css?v=${Date.now()}`
-  document.head.appendChild(link)
+  document.documentElement.dataset.theme = themeId === 'default' ? '' : themeId
 }
 
 const ThemeContext = createContext(null)

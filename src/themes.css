@@ -1,0 +1,105 @@
+/* All themes in one file - no external loading, no SW cache issues */
+/* Default: warm cream (inherits from index.css :root) */
+
+[data-theme="ocean-breeze"] {
+  --bg: #f0f7ff;
+  --surface: #e8f4fc;
+  --card: #ffffff;
+  --primary: #0d9488;
+  --primary-light: #14b8a6;
+  --accent: #0891b2;
+  --accent-light: #22d3ee;
+  --star: #f59e0b;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --border: #cbd5e1;
+  --success: #059669;
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+}
+[data-theme="ocean-breeze"] body { background: linear-gradient(180deg, var(--bg) 0%, #e0f2fe 100%); }
+[data-theme="ocean-breeze"] .card { box-shadow: var(--shadow); border: 1px solid var(--border); }
+[data-theme="ocean-breeze"] .layout-header,
+[data-theme="ocean-breeze"] .kid-layout-header { background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+[data-theme="ocean-breeze"] .shop-item-card.affordable { box-shadow: 0 0 0 2px var(--bg), 0 6px 24px rgba(245,158,11,0.2); }
+[data-theme="ocean-breeze"] .shop-item-card.affordable:hover { box-shadow: 0 0 0 2px var(--bg), 0 8px 28px rgba(245,158,11,0.25); }
+
+[data-theme="forest-grove"] {
+  --bg: #f5f0e8;
+  --surface: #faf6ef;
+  --card: #fffef9;
+  --primary: #4d7c0f;
+  --primary-light: #65a30d;
+  --accent: #b45309;
+  --accent-light: #d97706;
+  --star: #ca8a04;
+  --text: #292524;
+  --text-muted: #57534e;
+  --border: #d6d3d1;
+  --success: #15803d;
+  --radius: 20px;
+  --shadow: 0 2px 16px rgba(41,37,36,0.06);
+}
+[data-theme="forest-grove"] body { background: var(--bg); }
+[data-theme="forest-grove"] .card { box-shadow: var(--shadow); border: 1px solid var(--border); }
+[data-theme="forest-grove"] .btn { border-radius: 12px; }
+[data-theme="forest-grove"] .layout-header,
+[data-theme="forest-grove"] .kid-layout-header { background: var(--card); border-bottom: 2px solid var(--border); }
+[data-theme="forest-grove"] .shop-item-card.affordable { border: 3px solid var(--star); box-shadow: 0 4px 20px rgba(202,138,4,0.2); }
+[data-theme="forest-grove"] .role-choice-kid { border-color: var(--primary); }
+[data-theme="forest-grove"] .role-choice-kid:hover { border-color: var(--primary); box-shadow: 0 4px 20px rgba(77,124,15,0.15); }
+
+[data-theme="neon-playground"] {
+  --bg: #1a1a2e;
+  --surface: #16213e;
+  --card: #1f2937;
+  --primary: #a855f7;
+  --primary-light: #c084fc;
+  --accent: #06b6d4;
+  --accent-light: #22d3ee;
+  --star: #fbbf24;
+  --text: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border: #374151;
+  --success: #10b981;
+  --radius: 14px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+[data-theme="neon-playground"] body { background: var(--bg); }
+[data-theme="neon-playground"] .card { background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow); }
+[data-theme="neon-playground"] .btn-primary { box-shadow: 0 0 20px rgba(168,85,247,0.4); }
+[data-theme="neon-playground"] .btn-primary:hover:not(:disabled) { box-shadow: 0 0 24px rgba(192,132,252,0.5); }
+[data-theme="neon-playground"] .btn-ghost { border-color: var(--border); color: var(--text-muted); }
+[data-theme="neon-playground"] .btn-ghost:hover { background: var(--surface); color: var(--text); }
+[data-theme="neon-playground"] .layout-header,
+[data-theme="neon-playground"] .kid-layout-header { background: var(--surface); border-bottom: 2px solid var(--primary); }
+[data-theme="neon-playground"] .layout-nav a,
+[data-theme="neon-playground"] .layout-nav .layout-logout,
+[data-theme="neon-playground"] .kid-layout-exit { color: var(--text-muted); }
+[data-theme="neon-playground"] .layout-nav a:hover,
+[data-theme="neon-playground"] .layout-nav .layout-logout:hover,
+[data-theme="neon-playground"] .kid-layout-exit:hover { background: var(--card); color: var(--text); }
+[data-theme="neon-playground"] .layout-nav a.active { background: var(--primary); color: white; }
+[data-theme="neon-playground"] .logo,
+[data-theme="neon-playground"] .kid-layout-logo { color: var(--primary); }
+[data-theme="neon-playground"] .logo:hover,
+[data-theme="neon-playground"] .kid-layout-logo:hover { color: var(--primary-light); }
+[data-theme="neon-playground"] .home h1 { color: var(--primary); }
+[data-theme="neon-playground"] .home-nav a { background: var(--card); color: var(--primary); border-color: var(--border); }
+[data-theme="neon-playground"] .home-nav a:hover { border-color: var(--primary); box-shadow: 0 0 16px rgba(168,85,247,0.3); }
+[data-theme="neon-playground"] .home-nav a.active { background: var(--primary); color: white; }
+[data-theme="neon-playground"] .role-choice { background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%); }
+[data-theme="neon-playground"] .role-choice-logo { color: var(--primary); }
+[data-theme="neon-playground"] .role-choice-parent { background: var(--primary); box-shadow: 0 0 24px rgba(168,85,247,0.3); }
+[data-theme="neon-playground"] .role-choice-parent:hover { box-shadow: 0 0 32px rgba(168,85,247,0.4); }
+[data-theme="neon-playground"] .role-choice-kid { background: var(--card); border-color: var(--primary); color: var(--text); }
+[data-theme="neon-playground"] .role-choice-kid:hover { background: var(--surface); border-color: var(--primary-light); box-shadow: 0 0 20px rgba(168,85,247,0.2); }
+[data-theme="neon-playground"] .shop-item-border { background: var(--card); border-color: var(--border); }
+[data-theme="neon-playground"] .shop-item-card.affordable { border: 3px solid var(--star); box-shadow: 0 0 0 2px var(--bg), 0 0 30px rgba(251,191,36,0.3); }
+[data-theme="neon-playground"] .shop-item-no-image { color: var(--border); }
+[data-theme="neon-playground"] .kid-picker-btn { background: var(--card); border-color: var(--border); color: var(--text); }
+[data-theme="neon-playground"] .kid-picker-btn:hover { border-color: var(--primary); background: var(--surface); }
+[data-theme="neon-playground"] .kid-picker-btn.active { background: var(--primary); border-color: var(--primary); }
+[data-theme="neon-playground"] .chore-form input,
+[data-theme="neon-playground"] .chore-form select,
+[data-theme="neon-playground"] .chore-completed-by-select { background: var(--card); border-color: var(--border); color: var(--text); }
