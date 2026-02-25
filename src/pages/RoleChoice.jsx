@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import InstallPrompt from '../components/InstallPrompt'
 import './RoleChoice.css'
 
 export default function RoleChoice() {
@@ -6,6 +7,7 @@ export default function RoleChoice() {
 
   return (
     <div className="role-choice">
+      <InstallPrompt />
       <h1 className="role-choice-logo">GamiChore</h1>
       <p className="role-choice-tagline">Earn stars. Do chores. Spend in the shop.</p>
       <div className="role-choice-buttons">

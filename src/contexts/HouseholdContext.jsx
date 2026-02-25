@@ -29,12 +29,14 @@ function collectData(kids, chores, choreSets, completions, shopItems, redemption
     age: k.age ?? '',
     starBalanceOverride: k.star_balance_override,
     choreSetIds: Array.isArray(k.chore_set_ids) ? k.chore_set_ids : k.chore_set_ids ? [k.chore_set_ids] : [],
+    uiMode: k.ui_mode || 'standard',
   }))
   const choreSetsNorm = (choreSets || []).map((s) => ({
     id: s.id,
     name: s.name,
     choreIds: s.chore_ids || [],
     frequency: s.frequency || 'daily',
+    weekdays: s.weekdays || null,
   }))
   const completionsNorm = (completions || []).map((c) => ({
     id: c.id,
@@ -53,6 +55,8 @@ function collectData(kids, chores, choreSets, completions, shopItems, redemption
     priceStars: s.price_stars,
     priceRands: s.price_rands,
     image: s.image || '',
+    itemType: s.item_type || 'general',
+    screenTimeMinutes: s.screen_time_minutes ?? null,
   }))
   const redemptionsNorm = (redemptions || []).map((r) => ({
     id: r.id,
@@ -162,6 +166,7 @@ export function HouseholdProvider({ children, householdId }) {
     if (updates.age != null) row.age = String(updates.age)
     if (updates.starBalanceOverride != null) row.star_balance_override = updates.starBalanceOverride
     if (updates.choreSetIds != null) row.chore_set_ids = updates.choreSetIds
+    if (updates.uiMode != null) row.ui_mode = updates.uiMode === 'simple' ? 'simple' : 'standard'
     const { error } = await supabase.from('kids').update(row).eq('id', id)
     if (error) throw error
     await fetchAll()
@@ -198,7 +203,7 @@ export function HouseholdProvider({ children, householdId }) {
     await fetchAll()
   }, [fetchAll])
 
-  const addChoreSet = useCallback(async (name, choreIds = [], frequency = 'daily') => {
+  const addChoreSet = useCallback(async (name, choreIds = [], frequency = 'daily', weekdays = null) => {
     const { data, error } = await supabase
       .from('chore_sets')
       .insert({
@@ -206,6 +211,7 @@ export function HouseholdProvider({ children, householdId }) {
         name: (name || '').trim(),
         chore_ids: choreIds || [],
         frequency: frequency || 'daily',
+        weekdays: Array.isArray(weekdays) && weekdays.length > 0 ? weekdays : null,
       })
       .select()
       .single()
@@ -219,6 +225,7 @@ export function HouseholdProvider({ children, householdId }) {
     if (updates.name != null) row.name = updates.name
     if (updates.choreIds != null) row.chore_ids = updates.choreIds
     if (updates.frequency != null) row.frequency = updates.frequency
+    if (updates.weekdays != null) row.weekdays = Array.isArray(updates.weekdays) && updates.weekdays.length > 0 ? updates.weekdays : null
     const { error } = await supabase.from('chore_sets').update(row).eq('id', setId)
     if (error) throw error
     await fetchAll()
@@ -307,13 +314,15 @@ export function HouseholdProvider({ children, householdId }) {
     return { stars: chore.starValue }
   }, [householdId, data.chores, data.completions, fetchAll])
 
-  const addShopItem = useCallback(async ({ name, priceStars, priceRands, image }) => {
+  const addShopItem = useCallback(async ({ name, priceStars, priceRands, image, itemType, screenTimeMinutes }) => {
     const { error } = await supabase.from('shop_items').insert({
       household_id: householdId,
       name: (name || '').trim(),
       price_stars: Number(priceStars) || 0,
       price_rands: Number(priceRands) || 0,
       image: image || '',
+      item_type: itemType === 'screen_time' ? 'screen_time' : 'general',
+      screen_time_minutes: itemType === 'screen_time' && screenTimeMinutes != null ? Number(screenTimeMinutes) || null : null,
     })
     if (error) throw error
     await fetchAll()
@@ -325,6 +334,11 @@ export function HouseholdProvider({ children, householdId }) {
     if (updates.priceStars != null) row.price_stars = updates.priceStars
     if (updates.priceRands != null) row.price_rands = updates.priceRands
     if (updates.image != null) row.image = updates.image
+    if (updates.itemType != null) {
+      row.item_type = updates.itemType === 'screen_time' ? 'screen_time' : 'general'
+      if (updates.itemType === 'general') row.screen_time_minutes = null
+    }
+    if (updates.screenTimeMinutes != null && updates.itemType !== 'general') row.screen_time_minutes = Number(updates.screenTimeMinutes) || null
     const { error } = await supabase.from('shop_items').update(row).eq('id', id)
     if (error) throw error
     await fetchAll()

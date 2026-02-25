@@ -1,10 +1,13 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from './contexts/AuthContext'
+import { useHousehold } from './contexts/HouseholdContext'
 import './Layout.css'
 
 export default function ParentLayout() {
   const navigate = useNavigate()
   const { signOut } = useAuth()
+  const { getPendingCompletions } = useHousehold()
+  const pendingCount = getPendingCompletions().length
 
   function handleLogout() {
     signOut()
@@ -18,7 +21,14 @@ export default function ParentLayout() {
         <nav className="layout-nav">
           <NavLink to="/parent" end>Home</NavLink>
           <NavLink to="/parent/chores">Chores</NavLink>
-          <NavLink to="/parent/completed-tasks">Completed tasks</NavLink>
+          <NavLink to="/parent/completed-tasks" className="nav-with-badge">
+            Completed tasks
+            {pendingCount > 0 && (
+              <span className="nav-badge" title={`${pendingCount} awaiting approval`}>
+                {pendingCount}
+              </span>
+            )}
+          </NavLink>
           <NavLink to="/parent/manage-account">Manage account</NavLink>
           <NavLink to="/parent/shop">Shop</NavLink>
           <NavLink to="/kid">Kid view</NavLink>

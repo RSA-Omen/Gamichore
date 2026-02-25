@@ -1,0 +1,61 @@
+/* Design 2: Forest Grove — earthy, natural, organic */
+:root {
+  --bg: #f5f0e8;
+  --surface: #faf6ef;
+  --card: #fffef9;
+  --primary: #4d7c0f;
+  --primary-light: #65a30d;
+  --accent: #b45309;
+  --accent-light: #d97706;
+  --star: #ca8a04;
+  --text: #292524;
+  --text-muted: #57534e;
+  --border: #d6d3d1;
+  --success: #15803d;
+  --radius: 20px;
+  --shadow: 0 2px 16px rgba(41, 37, 36, 0.06);
+  --font-display: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  background: var(--bg);
+}
+
+.card {
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.btn {
+  border-radius: 12px;
+}
+
+.layout-header,
+.kid-layout-header {
+  background: var(--card);
+  border-bottom: 2px solid var(--border);
+}
+
+.home-nav a,
+.role-choice-btn {
+  border-radius: var(--radius);
+}
+
+.shop-item-border {
+  border-radius: var(--radius);
+}
+
+.shop-item-card.affordable {
+  border: 3px solid var(--star);
+  box-shadow: 0 4px 20px rgba(202, 138, 4, 0.2);
+}
+
+.role-choice-kid {
+  border-color: var(--primary);
+}
+
+.role-choice-kid:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 20px rgba(77, 124, 15, 0.15);
+}

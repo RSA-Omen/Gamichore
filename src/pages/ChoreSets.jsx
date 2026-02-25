@@ -20,6 +20,7 @@ export default function ChoreSets() {
   const [formName, setFormName] = useState('')
   const [formChoreIds, setFormChoreIds] = useState([])
   const [formFrequency, setFormFrequency] = useState('daily')
+  const [formWeekdays, setFormWeekdays] = useState([])
   const [formAssignedKidIds, setFormAssignedKidIds] = useState([])
   const [showForm, setShowForm] = useState(false)
   const [presetAge, setPresetAge] = useState('all')
@@ -29,11 +30,22 @@ export default function ChoreSets() {
 
   const choreById = useMemo(() => Object.fromEntries(chores.map((c) => [c.id, c])), [chores])
 
+  const WEEKDAYS = [
+    { value: 1, label: 'Mon' },
+    { value: 2, label: 'Tue' },
+    { value: 3, label: 'Wed' },
+    { value: 4, label: 'Thu' },
+    { value: 5, label: 'Fri' },
+    { value: 6, label: 'Sat' },
+    { value: 7, label: 'Sun' },
+  ]
+
   function openNew() {
     setEditingId(null)
     setFormName('')
     setFormChoreIds([])
     setFormFrequency('daily')
+    setFormWeekdays([])
     setFormAssignedKidIds([])
     setShowForm(true)
   }
@@ -43,8 +55,15 @@ export default function ChoreSets() {
     setFormName(set.name)
     setFormChoreIds(set.choreIds || [])
     setFormFrequency(set.frequency || 'daily')
+    setFormWeekdays(Array.isArray(set.weekdays) ? [...set.weekdays] : [])
     setFormAssignedKidIds(kids.filter((k) => (k.choreSetIds || []).includes(set.id)).map((k) => k.id))
     setShowForm(true)
+  }
+
+  function toggleWeekday(v) {
+    setFormWeekdays((prev) =>
+      prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v].sort((a, b) => a - b)
+    )
   }
 
   function toggleChore(choreId) {
@@ -63,6 +82,7 @@ export default function ChoreSets() {
           name: formName.trim(),
           choreIds: formChoreIds,
           frequency: formFrequency,
+          weekdays: formFrequency === 'daily' ? formWeekdays : null,
         })
         for (const k of kids) {
           const hasSet = (k.choreSetIds || []).includes(editingId)
@@ -75,7 +95,12 @@ export default function ChoreSets() {
           }
         }
       } else {
-        const { id: newSetId } = await addChoreSet(formName.trim(), formChoreIds, formFrequency)
+        const { id: newSetId } = await addChoreSet(
+          formName.trim(),
+          formChoreIds,
+          formFrequency,
+          formFrequency === 'daily' ? formWeekdays : null
+        )
         for (const kidId of formAssignedKidIds) {
           const k = kids.find((x) => x.id === kidId)
           if (k) await updateKid(kidId, { choreSetIds: [...(k.choreSetIds || []), newSetId] })
@@ -177,6 +202,23 @@ export default function ChoreSets() {
               <option value="monthly">Monthly</option>
             </select>
           </label>
+          {formFrequency === 'daily' && (
+            <label>
+              Specific days (optional — leave empty for every day)
+              <div className="chore-set-weekdays">
+                {WEEKDAYS.map(({ value, label }) => (
+                  <label key={value} className="chore-set-weekday-item">
+                    <input
+                      type="checkbox"
+                      checked={formWeekdays.includes(value)}
+                      onChange={() => toggleWeekday(value)}
+                    />
+                    <span>{label}</span>
+                  </label>
+                ))}
+              </div>
+            </label>
+          )}
           <label>
             Chores in this set
             <div className="chore-set-chore-list">
@@ -228,7 +270,14 @@ export default function ChoreSets() {
             <div key={set.id} className="card chore-set-card">
               <div className="chore-set-header">
                 <h3>{set.name}</h3>
-                <span className="chore-set-frequency">{set.frequency === 'weekly' ? 'Weekly' : set.frequency === 'monthly' ? 'Monthly' : 'Daily'}</span>
+                <span className="chore-set-frequency">
+                  {set.frequency === 'weekly' ? 'Weekly' : set.frequency === 'monthly' ? 'Monthly' : 'Daily'}
+                  {set.frequency === 'daily' && Array.isArray(set.weekdays) && set.weekdays.length > 0 && (
+                    <span className="chore-set-weekdays-badge">
+                      {' '}({set.weekdays.map((w) => WEEKDAYS.find((d) => d.value === w)?.label).filter(Boolean).join(', ')})
+                    </span>
+                  )}
+                </span>
                 <div className="chore-set-actions">
                   <button type="button" className="btn btn-ghost btn-sm" onClick={() => openEdit(set)}>
                     Edit

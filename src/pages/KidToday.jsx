@@ -42,9 +42,10 @@ export default function KidToday({ kidId, kid }) {
   }
 
   const todayLabel = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })
+  const isSimple = kid?.uiMode === 'simple'
 
   return (
-    <div className="page kid-today-page">
+    <div className={`page kid-today-page ${isSimple ? 'kid-today-simple' : ''}`}>
       <div className="kid-today-header card">
         <h1>Today</h1>
         <p className="kid-today-date">{todayLabel}</p>
@@ -55,7 +56,7 @@ export default function KidToday({ kidId, kid }) {
 
       {submitted && (
         <div className="kid-today-message card">
-          Submitted. Wait for a parent to approve to earn your stars.
+          {isSimple ? '🎉 Done! Ask a parent to approve.' : 'Submitted. Wait for a parent to approve to earn your stars.'}
         </div>
       )}
 
@@ -147,7 +148,7 @@ export default function KidToday({ kidId, kid }) {
           {selectedItems.length > 0 && (
             <div className="kid-today-submit">
               <button type="button" className="btn btn-primary" onClick={handleSubmit}>
-                Submit to parent ({selectedItems.length} task{selectedItems.length !== 1 ? 's' : ''})
+                {isSimple ? `👍 I did ${selectedItems.length} task${selectedItems.length !== 1 ? 's' : ''}!` : `Submit to parent (${selectedItems.length} task${selectedItems.length !== 1 ? 's' : ''})`}
               </button>
             </div>
           )}

@@ -88,3 +88,29 @@
   padding: 0.75rem 1rem;
   font-size: 1rem;
 }
+
+/* Simple mode: larger targets, minimal UI for ages 4-7 */
+.kid-today-simple .kid-today-list input[type="checkbox"] {
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  min-height: 2rem;
+}
+
+.kid-today-simple .kid-today-list li {
+  padding: 0.75rem 0;
+}
+
+.kid-today-simple .kid-today-list label {
+  font-size: 1.15rem;
+}
+
+.kid-today-simple .kid-today-submit .btn {
+  padding: 1rem 1.25rem;
+  font-size: 1.2rem;
+  min-height: 48px;
+}
+
+.kid-today-simple .kid-today-section h2 {
+  font-size: 1.25rem;
+}

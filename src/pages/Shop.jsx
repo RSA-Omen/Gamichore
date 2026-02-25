@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useHousehold } from '../contexts/HouseholdContext'
 import './Shop.css'
 
-export default function Shop({ kidId, setKidId, initialKidId = null, singleKidMode = false }) {
+export default function Shop({ kidId, setKidId, initialKidId = null, singleKidMode = false, simpleMode = false }) {
   const { kids, shopItems: items, getStarBalance, redeemItem } = useHousehold()
   const [selectedKidId, setSelectedKidId] = useState(initialKidId || kidId || (kids.length ? kids[0]?.id : null))
   const [redeemingId, setRedeemingId] = useState(null)
@@ -24,7 +24,7 @@ export default function Shop({ kidId, setKidId, initialKidId = null, singleKidMo
   const selectedKid = kids.find((k) => k.id === selectedKidId)
 
   return (
-    <div className="page shop-page">
+    <div className={`page shop-page ${simpleMode ? 'shop-simple' : ''}`}>
       <h1>Shop</h1>
 
       {kids.length === 0 ? (
@@ -81,6 +81,9 @@ export default function Shop({ kidId, setKidId, initialKidId = null, singleKidMo
                         <span className="shop-item-stars">{item.priceStars} ★</span>
                         {item.priceRands > 0 && (
                           <span className="shop-item-rands">R{item.priceRands}</span>
+                        )}
+                        {item.itemType === 'screen_time' && item.screenTimeMinutes != null && (
+                          <span className="shop-item-screen-time">📱 {item.screenTimeMinutes} min</span>
                         )}
                       </p>
                       <button

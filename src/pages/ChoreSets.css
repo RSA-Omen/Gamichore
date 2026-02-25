@@ -74,6 +74,28 @@
   font-weight: 500;
 }
 
+.chore-set-weekdays {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.chore-set-weekday-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.chore-set-weekday-item input {
+  margin: 0;
+}
+
+.chore-set-weekdays-badge {
+  font-weight: 400;
+}
+
 .chore-set-chore-list {
   max-height: 200px;
   overflow-y: auto;

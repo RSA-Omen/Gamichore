@@ -52,16 +52,19 @@ export function getChoresForKidToday(data, kidId) {
     const set = (data.choreSets || []).find((s) => s.id === setId)
     if (!set) return []
     return (set.choreIds || [])
-      .map((cid) => ({ chore: choreById[cid], frequency: set.frequency || 'daily' }))
+      .map((cid) => ({ chore: choreById[cid], frequency: set.frequency || 'daily', weekdays: set.weekdays }))
       .filter((x) => x.chore)
   })
+
+  const isoWeekday = (() => { const n = new Date().getDay(); return n === 0 ? 7 : n })()
 
   const daily = []
   const weekly = []
   const monthly = []
-  setChores.forEach(({ chore, frequency }) => {
+  setChores.forEach(({ chore, frequency, weekdays }) => {
     if (!chore) return
     if (frequency === 'daily') {
+      if (Array.isArray(weekdays) && weekdays.length > 0 && !weekdays.includes(isoWeekday)) return
       if (!daily.some((d) => d.chore.id === chore.id))
         daily.push({ chore, periodKey: today, alreadyDone: completedFor(data, kidId, chore.id, today) })
     } else if (frequency === 'weekly') {
@@ -89,16 +92,19 @@ export function getChoresForKidOnDate(data, kidId, dateStr) {
     const set = (data.choreSets || []).find((s) => s.id === setId)
     if (!set) return []
     return (set.choreIds || [])
-      .map((cid) => ({ chore: choreById[cid], frequency: set.frequency || 'daily' }))
+      .map((cid) => ({ chore: choreById[cid], frequency: set.frequency || 'daily', weekdays: set.weekdays }))
       .filter((x) => x.chore)
   })
+
+  const isoWeekday = (() => { const n = d.getDay(); return n === 0 ? 7 : n })()
 
   const daily = []
   const weekly = []
   const monthly = []
-  setChores.forEach(({ chore, frequency }) => {
+  setChores.forEach(({ chore, frequency, weekdays }) => {
     if (!chore) return
     if (frequency === 'daily') {
+      if (Array.isArray(weekdays) && weekdays.length > 0 && !weekdays.includes(isoWeekday)) return
       if (!daily.some((d) => d.chore.id === chore.id))
         daily.push({ chore, periodKey: day, alreadyDone: completedFor(data, kidId, chore.id, day) })
     } else if (frequency === 'weekly') {

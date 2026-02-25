@@ -18,14 +18,14 @@ function getStoredTheme() {
 }
 
 function applyTheme(themeId) {
-  let link = document.getElementById('theme-stylesheet')
-  if (!link) {
-    link = document.createElement('link')
-    link.id = 'theme-stylesheet'
-    link.rel = 'stylesheet'
-    document.head.appendChild(link)
-  }
-  link.href = `/src/themes/${themeId}.css`
+  const existing = document.getElementById('theme-stylesheet')
+  if (existing) existing.remove()
+
+  const link = document.createElement('link')
+  link.id = 'theme-stylesheet'
+  link.rel = 'stylesheet'
+  link.href = `/themes/${themeId}.css?v=${Date.now()}`
+  document.head.appendChild(link)
 }
 
 const ThemeContext = createContext(null)

@@ -36,7 +36,7 @@ export default function KidView() {
         {tab === 'today' ? (
           <KidToday kidId={validKid} kid={kid} />
         ) : (
-          <Shop initialKidId={validKid} singleKidMode />
+          <Shop initialKidId={validKid} singleKidMode simpleMode={kid?.uiMode === 'simple'} />
         )}
       </div>
     )

@@ -11,6 +11,8 @@ export default function ShopAdmin() {
   const [formPriceStars, setFormPriceStars] = useState('')
   const [formPriceRands, setFormPriceRands] = useState('')
   const [formImage, setFormImage] = useState('')
+  const [formItemType, setFormItemType] = useState('general')
+  const [formScreenTimeMinutes, setFormScreenTimeMinutes] = useState('')
   const [showForm, setShowForm] = useState(false)
   const [saving, setSaving] = useState(false)
 
@@ -20,6 +22,8 @@ export default function ShopAdmin() {
     setFormPriceStars('')
     setFormPriceRands('')
     setFormImage('')
+    setFormItemType('general')
+    setFormScreenTimeMinutes('')
     setShowForm(true)
   }
 
@@ -29,6 +33,8 @@ export default function ShopAdmin() {
     setFormPriceStars(String(item.priceStars))
     setFormPriceRands(String(item.priceRands))
     setFormImage(item.image || '')
+    setFormItemType(item.itemType || 'general')
+    setFormScreenTimeMinutes(item.screenTimeMinutes != null ? String(item.screenTimeMinutes) : '')
     setShowForm(true)
   }
 
@@ -58,6 +64,8 @@ export default function ShopAdmin() {
         priceStars: Math.max(0, parseInt(formPriceStars, 10) || 0),
         priceRands: Math.max(0, parseFloat(formPriceRands) || 0),
         image: formImage || '',
+        itemType: formItemType,
+        screenTimeMinutes: formItemType === 'screen_time' ? (parseInt(formScreenTimeMinutes, 10) || null) : null,
       }
       if (editingId) {
         await updateShopItem(editingId, payload)
@@ -119,6 +127,25 @@ export default function ShopAdmin() {
             />
           </label>
           <label>
+            Reward type
+            <select value={formItemType} onChange={(e) => setFormItemType(e.target.value)}>
+              <option value="general">General reward</option>
+              <option value="screen_time">Screen time</option>
+            </select>
+          </label>
+          {formItemType === 'screen_time' && (
+            <label>
+              Screen time (minutes)
+              <input
+                type="number"
+                min="1"
+                value={formScreenTimeMinutes}
+                onChange={(e) => setFormScreenTimeMinutes(e.target.value)}
+                placeholder="30"
+              />
+            </label>
+          )}
+          <label>
             Picture
             <div className="image-upload">
               <input
@@ -162,6 +189,9 @@ export default function ShopAdmin() {
               <p className="shop-admin-prices">
                 <span>{item.priceStars} ⭐</span>
                 {item.priceRands > 0 && <span>R {item.priceRands}</span>}
+                {item.itemType === 'screen_time' && item.screenTimeMinutes != null && (
+                  <span className="shop-admin-screen-time">📱 {item.screenTimeMinutes} min</span>
+                )}
               </p>
               <div className="shop-admin-actions">
                 <button type="button" className="btn btn-ghost btn-sm" onClick={() => openEdit(item)}>

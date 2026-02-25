@@ -1,0 +1,18 @@
+.invite-accept-page {
+  max-width: 420px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.invite-accept-page h1 {
+  margin-bottom: 0.75rem;
+}
+
+.invite-accept-page p {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
+.invite-accept-error .invite-accept-page p {
+  color: var(--text);
+}

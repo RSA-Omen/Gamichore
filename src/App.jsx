@@ -20,6 +20,7 @@ import Settings from './pages/Settings'
 import HabitTracker from './pages/HabitTracker'
 import ParentHome from './pages/ParentHome'
 import KidView from './pages/KidView'
+import InviteAccept from './pages/InviteAccept'
 import { HouseholdProvider } from './contexts/HouseholdContext'
 import './App.css'
 
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<RoleChoice />} />
         <Route path="/parent-auth" element={<ParentAuth />} />
+        <Route path="/invite/:token" element={<InviteAccept />} />
         <Route element={<RequireAuth />}>
           <Route element={<HouseholdLayout />}>
             <Route path="/parent" element={<ParentLayout />}>

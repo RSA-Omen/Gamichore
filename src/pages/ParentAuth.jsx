@@ -1,18 +1,20 @@
 import { useState } from 'react'
-import { useNavigate, Navigate } from 'react-router-dom'
+import { useNavigate, Navigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { isSupabaseConfigured } from '../lib/supabase'
 import './ParentAuth.css'
 
 export default function ParentAuth() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const redirectTo = searchParams.get('redirect') || '/parent'
   const { isAuthenticated, user, householdId, loading, signIn, signUp, signOut } = useAuth()
   const [mode, setMode] = useState('signin') // 'signin' | 'signup'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
-  if (isAuthenticated) return <Navigate to="/parent" replace />
+  if (isAuthenticated) return <Navigate to={redirectTo} replace />
 
   // User signed in but profile missing (e.g. created before trigger)
   if (!loading && user && !householdId) {
@@ -47,7 +49,7 @@ export default function ParentAuth() {
       } else {
         await signIn(email.trim(), password)
       }
-      navigate('/parent', { replace: true })
+      navigate(redirectTo, { replace: true })
     } catch (err) {
       setError(err.message || 'Something went wrong.')
     }

@@ -11,6 +11,7 @@ export default function Kids() {
   const [formStars, setFormStars] = useState('')
   const [formStarOverride, setFormStarOverride] = useState(false)
   const [formChoreSetIds, setFormChoreSetIds] = useState([])
+  const [formUiMode, setFormUiMode] = useState('standard')
   const [showForm, setShowForm] = useState(false)
   const [saving, setSaving] = useState(false)
 
@@ -25,6 +26,7 @@ export default function Kids() {
     setFormStars('')
     setFormStarOverride(false)
     setFormChoreSetIds([])
+    setFormUiMode('standard')
     setShowForm(true)
   }
 
@@ -37,6 +39,7 @@ export default function Kids() {
     setFormStars(String(kid.starBalanceOverride ?? balance))
     setFormStarOverride(kid.starBalanceOverride !== null && kid.starBalanceOverride !== undefined)
     setFormChoreSetIds(Array.isArray(kid.choreSetIds) ? [...kid.choreSetIds] : [])
+    setFormUiMode(kid.uiMode === 'simple' ? 'simple' : 'standard')
     setShowForm(true)
   }
 
@@ -53,11 +56,15 @@ export default function Kids() {
           age: formAge.trim(),
           starBalanceOverride: starOverride,
           choreSetIds: formChoreSetIds,
+          uiMode: formUiMode,
         })
       } else {
         const { id: newId } = await addKid(formName.trim(), formAvatar.trim(), formAge.trim())
-        if (newId && formChoreSetIds.length) {
-          await updateKid(newId, { choreSetIds: formChoreSetIds })
+        if (newId) {
+          const updates = {}
+          if (formChoreSetIds.length) updates.choreSetIds = formChoreSetIds
+          if (formUiMode !== 'standard') updates.uiMode = formUiMode
+          if (Object.keys(updates).length) await updateKid(newId, updates)
         }
       }
       setShowForm(false)
@@ -139,6 +146,13 @@ export default function Kids() {
               )}
             </>
           )}
+          <label>
+            UI mode
+            <select value={formUiMode} onChange={(e) => setFormUiMode(e.target.value)}>
+              <option value="standard">Standard (ages 8+)</option>
+              <option value="simple">Simple (ages 4–7)</option>
+            </select>
+          </label>
           <label>
             Chore sets
             <div className="kid-form-chore-sets">
